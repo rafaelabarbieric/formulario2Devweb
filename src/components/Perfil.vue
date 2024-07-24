@@ -8,8 +8,9 @@ defineProps(['dadosPerfil'])
 
     <div>
 
-        <h1>{{ dadosPerfil.nome }}</h1>
+        <h1>{{ dadosPerfil.hobbies }}</h1>
 
+        
     </div>
   
 </template>
