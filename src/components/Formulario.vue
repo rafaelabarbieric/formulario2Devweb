@@ -2,6 +2,8 @@
 
 defineProps(['dados'])
 
+import { ref } from 'vue'
+
 let estados = [
   {name: 'AC'},
   {name: 'AL'},
@@ -124,6 +126,7 @@ let estados = [
             </div>
 
         </form>
+
 
     </div>
   
