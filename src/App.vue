@@ -26,7 +26,7 @@ const user = reactive([
   
   <Formulario :dados="user"></Formulario>
 
-  <Perfil :dados="user"></Perfil>
+  <Perfil :dados-perfil="user"></Perfil>
 
 </template>
 
