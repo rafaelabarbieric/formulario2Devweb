@@ -1,7 +1,21 @@
 <script setup>
-defineProps(['dados'])
-
 import { ref } from 'vue'
+
+const dados = ref(
+  {
+    nome: '',
+    email: '',
+    senha: '',
+    cSenha: '',
+    dataNasc: '',
+    endereco: '',
+    cidade: '',
+    estados: '',
+    hobbies: [],
+    lingProg: '',
+    biografia: ''
+  }
+)
 
 let estados = [
     { name: 'AC' },
@@ -36,7 +50,7 @@ let estados = [
 
 <template>
     <div class="form">
-        <form @submit.prevent="$emit('enviar')">
+        <form @submit.prevent="$emit('enviar', {...dados})">
             <div class="elements">
                 <h2>Edite o seu Perfil:</h2>
             </div>
@@ -56,24 +70,44 @@ let estados = [
 
             <div action="/action_page.php" class="was-validated elements">
                 <label class="form-label" for="email">Email:</label>
-                <input class="form-control" id="email" type="email" v-model="dados.email" required />
+                <input 
+                    class="form-control" 
+                    id="email" type="email" 
+                    v-model="dados.email" 
+                    required
+                />
                 <div class="valid-feedback">Valido</div>
                 <div class="invalid-feedback">Campo Obrigátorio</div>
             </div>
 
             <div class="elements">
                 <label class="form-label" for="dataNasc">Data de Nascimento:</label>
-                <input class="form-control" id="dataNasc" type="date" v-model="dados.dataNasc" />
+                <input 
+                    class="form-control" 
+                    id="dataNasc" 
+                    type="date" 
+                    v-model="dados.dataNasc" 
+                />
             </div>
 
             <div class="elements">
                 <label class="form-label" for="endereco">Endereço</label>
-                <input class="form-control" id="endereco" type="text" v-model="dados.endereco" />
+                <input 
+                    class="form-control" 
+                    id="endereco" 
+                    type="text" 
+                    v-model="dados.endereco" 
+                />
             </div>
 
             <div class="elements">
                 <label class="form-label" for="cidade">Cidade:</label>
-                <input class="form-control" id="cidade" type="text" v-model="dados.cidade" />
+                <input
+                    class="form-control" 
+                    id="cidade" 
+                    type="text" 
+                    v-model="dados.cidade" 
+                />
             </div>
 
             <div class="elements">
@@ -94,8 +128,7 @@ let estados = [
                         name="esportes" 
                         id="esportes" 
                         value="Esportes" 
-                    />
-                    <label class="form-check-label" for="esportes">Esportes</label>
+                    /> Esportes
                 </div>
                 <div class="form-check">
                     <input 
@@ -104,8 +137,7 @@ let estados = [
                         name="musica" 
                         id="musica" 
                         value="Musicas" 
-                    />
-                    <label class="form-check-label" for="musica">Música</label>
+                    /> Músicas
                 </div>
                 <div class="form-check">
                     <input 
@@ -114,8 +146,7 @@ let estados = [
                         name="filme" 
                         id="filme" 
                         value="Filmes" 
-                    />
-                    <label class="form-check-label" for="filme">Filme</label>
+                    /> Filmes
                 </div>
                 <div class="form-check">
                     <input 
@@ -124,8 +155,7 @@ let estados = [
                         name="viagens" 
                         id="viagens" 
                         value="Viagens" 
-                    />
-                    <label class="form-check-label" for="viagens">Viagens</label>
+                    /> Viagens
                 </div>
                 <div class="form-check">
                     <input 
@@ -134,23 +164,35 @@ let estados = [
                         name="leitura" 
                         id="leitura" 
                         value="Leitura"
-                    />
-                    <label class="form-check-label" for="leitura">Leitura</label>
+                    /> Leitura
                 </div>
             </div>
 
             <div class="elements">
                 <label class="form-label" for="lingProg">Sua Linguagem de Progamação Favorita:</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" v-model="dados.lingProg" value="C" /> C
+                    <input 
+                        class="form-check-input" 
+                        type="radio" 
+                        v-model="dados.lingProg" 
+                        value="C" 
+                /> C
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" v-model="dados.lingProg" value="JavaSctipt" />
-                    JavaScript
+                    <input 
+                        class="form-check-input" 
+                        type="radio" 
+                        v-model="dados.lingProg" 
+                        value="JavaSctipt" 
+                    /> JavaScript
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" v-model="dados.lingProg" value="Python" />
-                    Python
+                    <input 
+                        class="form-check-input" 
+                        type="radio" 
+                        v-model="dados.lingProg" 
+                        value="Python" 
+                    /> Python
                 </div>
             </div>
 
@@ -163,14 +205,26 @@ let estados = [
 
             <div action="/action_page.php" class="was-validated elements">
                 <label class="form-label" for="senha">Senha:</label>
-                <input class="form-control" id="senha" type="password" v-model="dados.senha" required />
+                <input 
+                    class="form-control" 
+                    id="senha" 
+                    type="password" 
+                    v-model="dados.senha" 
+                    required 
+                />
                 <div class="valid-feedback">Valido</div>
                 <div class="invalid-feedback">Campo Obrigátorio</div>
             </div>
 
             <div action="/action_page.php" class="was-validated elements">
                 <label class="form-label" for="cSenha">Confirmação de senha:</label>
-                <input class="form-control" id="cSenha" type="password" v-model="dados.cSenha" required />
+                <input 
+                    class="form-control" 
+                    id="cSenha" 
+                    type="password" 
+                    v-model="dados.cSenha" 
+                    required 
+                />
                 <div class="valid-feedback">Valido</div>
                 <div class="invalid-feedback">Campo Obrigátorio</div>
             </div>
@@ -199,5 +253,9 @@ form {
 
 .elements {
     margin: 20px;
+}
+
+.margem-hobbies{
+    margin-left: margem-hobbies;
 }
 </style>

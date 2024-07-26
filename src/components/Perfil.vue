@@ -5,33 +5,40 @@ defineProps(['dadosPerfil'])
 </script>
 
 <template>
-    <div>
 
-        <h1>{{ dadosPerfil.hobbies }}</h1>
-
-    </div>
 
     <div class="container">
-        <div class="perfil">
-            <section>
-            <h1 style="text-align: center;">{{ dadosPerfil.nome }}</h1>
+
+        <div>
+            <section id="nome">
+                <h1 style="text-align: center;"><strong>{{ dadosPerfil.nome }}</strong></h1>
             </section>
+
+            <h2>Informações pessoais</h2>
+        </div>
+
+        <hr>
+
+    </div>
+
+    <div>
 
             <section class="blocoDados">
-                <p>Email: {{ dadosPerfil.email }}</p>
-                <p>Senha: {{ dadosPerfil.senha }}</p>
-                <p>Data de nascimento: {{ dadosPerfil.dataNasc }}</p>
-                <p>Endereço: {{ dadosPerfil.endereco }}, {{ dadosPerfil.cidade }} - {{ dadosPerfil.estados }}</p>
-                <p>Hobbies: {{ dadosPerfil.hobbies }}</p>
-                <p>Linguagem favorita de programação: {{ dadosPerfil.lingProg }}</p>
-                <p>Biografia: {{ dadosPerfil.biografia }}</p>
+                <p>Email: <strong>{{ dadosPerfil.email }}</strong></p>
+                <p>Senha: <strong>{{ dadosPerfil.senha }}</strong></p>
+                <p>Data de nascimento: <strong>{{ dadosPerfil.dataNasc }}</strong></p>
+                <p>Endereço: <strong>{{ dadosPerfil.endereco }}, {{ dadosPerfil.cidade }} - {{ dadosPerfil.estados }}</strong></p>
+                <p>Hobbies: <strong>{{ dadosPerfil.hobbies.join(', ') }}</strong></p>
+                <p>Linguagem favorita de programação: <strong>{{ dadosPerfil.lingProg }}</strong></p>
+                <p>Biografia: <strong>{{ dadosPerfil.biografia }}</strong></p>
             </section>    
 
-            <section>
-                <input @click="$emit('voltar')" type="button" value="Voltar">
+            <section id="button">
+                <input class="btn btn-outline-dark" @click="$emit('voltar')" type="button" value="Voltar">
             </section>
+
     </div>
-</div>
+
 
 </template>
 
@@ -41,22 +48,26 @@ defineProps(['dadosPerfil'])
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 5%;
-    background-color: #655BA6;
-
-}
-.perfil{
-    height: 60%;
-    width: 25%;
-    border: 2px solid black;
-    border-radius: 10px;
-    padding: 10px;
 }
 
+#nome{
+    margin-bottom: 20%;
+}
+
+hr{
+    width: 60%;
+}
 .blocoDados{
-    margin-left: 5%;
+    display: inline-block;
+    text-align: left;
+    margin-left: 25%;
+}
+
+#button{
+    text-align: center;
 }
 </style>
