@@ -70,11 +70,11 @@ let estados = [
                 <label class="form-label" for="cidade">Cidade:</label>
                 <input class="form-control" id="cidade" type="text" v-model="dados.cidade">
             </div>
-
+            
             <div class="elements">
-                <label class="form-label" for="estado">Estado:</label>
-                <select class="form-select" name="estados" id="estado" v-model="dados.estados">
-                    <option v-for="estado of estados " :key="estado" value="estado.name">{{ estado.name }}</option>
+                <label for="estado">Estado:</label>
+                <select name="estados" id="estado" v-model="dados.estados">
+                    <option v-for="estado of estados " :key="estado" :value="estado.name">{{ estado.name }}</option>
                 </select>
             </div>
 
