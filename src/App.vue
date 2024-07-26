@@ -21,20 +21,21 @@ const user = reactive([
 ])
 
 const button = ref(false)
-const buttonName = computed(() =>
-  button.value ? 'Voltar' : 'Enviar',
-)
-
+function enviar() {
+  if (user.senha == user.cSenha) {
+    button.value = true
+  }
+}
+function voltar() {
+  button.value = false
+}
 </script>
 
 <template>
   
-  <Formulario v-if="!button" :dados="user"></Formulario>
+  <Formulario v-if="!button" :dados="user" @enviar = "enviar()"></Formulario>
 
-  <Perfil v-if="button" :dados-perfil="user" ></Perfil>
-
-  <button @click="button=!button">{{buttonName}}</button>
-
+  <Perfil v-if="button" :dados-perfil="user" @voltar="voltar()"></Perfil>
 
 </template>
 

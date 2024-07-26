@@ -9,12 +9,13 @@ defineProps(['dadosPerfil'])
 
         <h1>{{ dadosPerfil.hobbies }}</h1>
 
-        
-<div class="container">
-    <div class="perfil">
-        <section>
+    </div>
+
+    <div class="container">
+        <div class="perfil">
+            <section>
             <h1 style="text-align: center;">{{ dadosPerfil.nome }}</h1>
-        </section>
+            </section>
 
             <section class="blocoDados">
                 <p>Email: {{ dadosPerfil.email }}</p>
@@ -25,6 +26,10 @@ defineProps(['dadosPerfil'])
                 <p>Linguagem favorita de programação: {{ dadosPerfil.lingProg }}</p>
                 <p>Biografia: {{ dadosPerfil.biografia }}</p>
             </section>    
+
+            <section>
+                <input @click="$emit('voltar')" type="button" value="Voltar">
+            </section>
     </div>
 </div>
 

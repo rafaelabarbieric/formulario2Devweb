@@ -1,112 +1,156 @@
 <script setup>
-
 defineProps(['dados'])
 
 import { ref } from 'vue'
 
 let estados = [
-  {name: 'AC'},
-  {name: 'AL'},
-  {name: 'AP'}, 
-  {name: 'AM'}, 
-  {name: 'BA'}, 
-  {name: 'CE'}, 
-  {name: 'DF'},
-  {name: 'ES'}, 
-  {name: 'GO'}, 
-  {name: 'MA'}, 
-  {name: 'MT'}, 
-  {name: 'MS'}, 
-  {name: 'MG'}, 
-  {name: 'PA'}, 
-  {name: 'PB'}, 
-  {name: 'PR'}, 
-  {name: 'PE'}, 
-  {name: 'PI'}, 
-  {name: 'RJ'}, 
-  {name: 'RN'},
-  {name: 'RS'}, 
-  {name: 'RO'}, 
-  {name: 'RR'}, 
-  {name: 'SC'}, 
-  {name: 'SP'}, 
-  {name: 'SE'},
-  {name: 'TO'}
-  ]
-
-
+    { name: 'AC' },
+    { name: 'AL' },
+    { name: 'AP' },
+    { name: 'AM' },
+    { name: 'BA' },
+    { name: 'CE' },
+    { name: 'DF' },
+    { name: 'ES' },
+    { name: 'GO' },
+    { name: 'MA' },
+    { name: 'MT' },
+    { name: 'MS' },
+    { name: 'MG' },
+    { name: 'PA' },
+    { name: 'PB' },
+    { name: 'PR' },
+    { name: 'PE' },
+    { name: 'PI' },
+    { name: 'RJ' },
+    { name: 'RN' },
+    { name: 'RS' },
+    { name: 'RO' },
+    { name: 'RR' },
+    { name: 'SC' },
+    { name: 'SP' },
+    { name: 'SE' },
+    { name: 'TO' }
+]
 </script>
 
 <template>
-
     <div class="form">
-
-        <form>
+        <form @submit.prevent="$emit('enviar')">
             <div class="elements">
-                <h1>Edite o seu Perfil</h1>
+                <h2>Edite o seu Perfil:</h2>
             </div>
 
-            <div class="elements">
+            <div action="/action_page.php" class="was-validated elements">
                 <label class="form-label" for="nome">Nome:</label>
-                <input class="form-control" id="nome" type="text" v-model="dados.nome">
+                <input 
+                    class="form-control" 
+                    id="nome" 
+                    type="text" 
+                    v-model="dados.nome" 
+                    required 
+                />
+                <div class="valid-feedback">Valido</div>
+                <div class="invalid-feedback">Campo Obrigátorio</div>
             </div>
 
-            <div class="elements">
+            <div action="/action_page.php" class="was-validated elements">
                 <label class="form-label" for="email">Email:</label>
-                <input class="form-control" id="email" type="email" v-model="dados.email">
+                <input class="form-control" id="email" type="email" v-model="dados.email" required />
+                <div class="valid-feedback">Valido</div>
+                <div class="invalid-feedback">Campo Obrigátorio</div>
             </div>
 
             <div class="elements">
                 <label class="form-label" for="dataNasc">Data de Nascimento:</label>
-                <input class="form-control" id="dataNasc" type="date" v-model="dados.dataNasc">
+                <input class="form-control" id="dataNasc" type="date" v-model="dados.dataNasc" />
             </div>
 
             <div class="elements">
                 <label class="form-label" for="endereco">Endereço</label>
-                <input class="form-control" id="endereco" type="text" v-model="dados.endereco">
+                <input class="form-control" id="endereco" type="text" v-model="dados.endereco" />
             </div>
 
             <div class="elements">
                 <label class="form-label" for="cidade">Cidade:</label>
-                <input class="form-control" id="cidade" type="text" v-model="dados.cidade">
+                <input class="form-control" id="cidade" type="text" v-model="dados.cidade" />
             </div>
-            
+
             <div class="elements">
-                <label for="estado">Estado:</label>
-                <select name="estados" id="estado" v-model="dados.estados">
-                    <option v-for="estado of estados " :key="estado" :value="estado.name">{{ estado.name }}</option>
+                <label class="form-label" for="estado">Estado:</label>
+                <select class="form-select" name="estados" id="estado" v-model="dados.estados">
+                    <option v-for="estado of estados" :key="estado" :value="estado.name">
+                        {{ estado.name }}
+                    </option>
                 </select>
             </div>
 
             <div class="elements">
-                <label class="form-label" for="hobbies">Hobbies:</label>
+                <label class="form-label">Hobbies:</label>
                 <div class="form-check">
-                    <input type="checkbox" v-model="dados.hobbies" id="esportes" value="esportes"> Esportes
+                    <input 
+                        type="checkbox"
+                        v-model="dados.hobbies" 
+                        name="esportes" 
+                        id="esportes" 
+                        value="Esportes" 
+                    />
+                    <label class="form-check-label" for="esportes">Esportes</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" v-model="dados.hobbies" id="musica" value="musicas"> Músicas
+                    <input 
+                        type="checkbox" 
+                        v-model="dados.hobbies" 
+                        name="musica" 
+                        id="musica" 
+                        value="Musicas" 
+                    />
+                    <label class="form-check-label" for="musica">Música</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" v-model="dados.hobbies" id="filme" value="filmes"> Filmes
+                    <input 
+                        type="checkbox" 
+                        v-model="dados.hobbies" 
+                        name="filme" 
+                        id="filme" 
+                        value="Filmes" 
+                    />
+                    <label class="form-check-label" for="filme">Filme</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" v-model="dados.hobbies" id="viagens" value="viagens"> Viagens
+                    <input 
+                        type="checkbox" 
+                        v-model="dados.hobbies" 
+                        name="viagens" 
+                        id="viagens" 
+                        value="Viagens" 
+                    />
+                    <label class="form-check-label" for="viagens">Viagens</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" v-model="dados.hobbies" id="leitura" value="leitura"> Leitura
+                    <input 
+                        type="checkbox" 
+                        v-model="dados.hobbies" 
+                        name="leitura" 
+                        id="leitura" 
+                        value="Leitura"
+                    />
+                    <label class="form-check-label" for="leitura">Leitura</label>
                 </div>
             </div>
 
             <div class="elements">
                 <label class="form-label" for="lingProg">Sua Linguagem de Progamação Favorita:</label>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" v-model="dados.lingProg" value="C"> C
+                    <input class="form-check-input" type="radio" v-model="dados.lingProg" value="C" /> C
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" v-model="dados.lingProg" value="JavaSctipt"> JavaScript
+                    <input class="form-check-input" type="radio" v-model="dados.lingProg" value="JavaSctipt" />
+                    JavaScript
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" v-model="dados.lingProg" value="Python"> Python
+                    <input class="form-check-input" type="radio" v-model="dados.lingProg" value="Python" />
+                    Python
                 </div>
             </div>
 
@@ -115,26 +159,31 @@ let estados = [
                 <textarea class="form-control" type="text" id="bio" v-model="dados.biografia"></textarea>
             </div>
 
-            <div class="elements">
+            <div></div>
+
+            <div action="/action_page.php" class="was-validated elements">
                 <label class="form-label" for="senha">Senha:</label>
-                <input class="form-control" id="senha" type="password" v-model="dados.senha">
+                <input class="form-control" id="senha" type="password" v-model="dados.senha" required />
+                <div class="valid-feedback">Valido</div>
+                <div class="invalid-feedback">Campo Obrigátorio</div>
+            </div>
+
+            <div action="/action_page.php" class="was-validated elements">
+                <label class="form-label" for="cSenha">Confirmação de senha:</label>
+                <input class="form-control" id="cSenha" type="password" v-model="dados.cSenha" required />
+                <div class="valid-feedback">Valido</div>
+                <div class="invalid-feedback">Campo Obrigátorio</div>
             </div>
 
             <div class="elements">
-                <label class="form-label" for="cSenha">Confirmação de senha:</label>
-                <input class="form-control" id="cSenha" type="password" v-model="dados.cSenha">
+                <input id="color-button" class="btn btn-outline-dark" type="submit" value="Enviar" />
             </div>
-
         </form>
-
-
     </div>
-  
 </template>
 
 <style scoped>
-
-.form{
+.form {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -143,13 +192,12 @@ let estados = [
     margin-bottom: 5%;
 }
 
-form{
+form {
     border: 1px solid rgb(223, 219, 219);
     border-radius: 6px;
 }
 
-.elements{
+.elements {
     margin: 20px;
 }
-
 </style>
